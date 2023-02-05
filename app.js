@@ -183,3 +183,20 @@ button(document.getElementById('button')).onSubmit=handleEvent;
 in HTML:
 <div id="button"></div>
 */
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let cityName = event.target.cityName.value;
+  let minCustomer = event.target.minCustomer.value;
+  let maxCustomer = event.target.maxCustomer.value;
+  let averageCookie = event.target.averageCookie.value;
+
+  let newCity = new City(cityName, minCustomer, maxCustomer, averageCookie);
+
+  cityArr.push(newCity);
+  newCity.getCookiesSold();
+  newCity.render();
+  document.getElementById('tableFooter').remove();
+  tableFooter();
+}
